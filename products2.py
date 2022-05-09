@@ -1,14 +1,20 @@
+import os #operationg system 載入作業系統
+
 #讀取檔案
 products = []
-with open('products2.csv', 'r') as f:
-    for line in f:
-        if '商品,價格' in line:
-            continue
-        s = line.strip().split(',')
-        name = s[0]
-        price = s[1]
-        products.append([s[0] ,s[1]]) 
-print(products)
+if os.path.isfile('products2.csv'): #檢查檔案在不在
+    print('找到檔案了')
+    with open('products2.csv', 'r') as f:
+        for line in f:
+            if '商品,價格' in line:
+                continue
+            s = line.strip().split(',')
+            name = s[0]
+            price = s[1]
+            products.append([s[0] ,s[1]])
+    print(products)
+else:
+    print('找不到檔案....')
 
 #讓使用者輸入
 while True :
